@@ -170,9 +170,12 @@ REQUESTS_CACHE_BACKEND_SETTINGS = {
 }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> c72a6ab8 (fix: Deploy ATP on Zyte)
+=======
+>>>>>>> 0151d70a (feat: GCP Compatibility)
 # HUQ
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
@@ -234,6 +237,9 @@ SPIDERMON_SENTRY_PROJECT_NAME = "poi-finder"
 SPIDERMON_SENTRY_ENVIRONMENT_TYPE = "local"  # Override in settings on Zyte
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0151d70a (feat: GCP Compatibility)
 STATS_CLASS = "spidermon.contrib.stats.statscollectors.local_storage.LocalStorageStatsHistoryCollector"
 
 ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte
@@ -263,6 +269,9 @@ FEEDS = {
 #     "project_id": "huq-jimbo",
 #     "log_level": "INFO",
 # }
+<<<<<<< HEAD
 =======
 ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte
 >>>>>>> c72a6ab8 (fix: Deploy ATP on Zyte)
+=======
+>>>>>>> 0151d70a (feat: GCP Compatibility)
