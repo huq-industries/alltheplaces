@@ -13,12 +13,14 @@ import scrapy
 
 import locations
 
-BOT_NAME = "locations"
+from .utils import feed_uri_params
+
+ENV = "local"
+BOT_NAME = "locations-h"
 
 SPIDER_MODULES = ["locations.spiders"]
 NEWSPIDER_MODULE = "locations.spiders"
 COMMANDS_MODULE = "locations.commands"
-
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 USER_AGENT = f"Mozilla/5.0 (X11; Linux x86_64) {BOT_NAME}/{locations.__version__} (+https://github.com/alltheplaces/alltheplaces; framework {scrapy.__version__})"
@@ -79,7 +81,9 @@ DOWNLOADER_MIDDLEWARES = {
 # }
 
 EXTENSIONS = {
-    "locations.extensions.LogStatsExtension": 101,
+    "locations.extensions.google_auth.GoogleAuthExtension": 10,
+    "locations.extensions.stackdriver_logger.StackdriverLoggerExtension": 100,
+    "locations.extensions.log_stats.LogStatsExtension": 101,
 }
 
 # Configure item pipelines
@@ -96,10 +100,11 @@ ITEM_PIPELINES = {
     "locations.pipelines.check_item_properties.CheckItemPropertiesPipeline": 600,
     "locations.pipelines.closed.ClosePipeline": 650,
     "locations.pipelines.apply_nsi_categories.ApplyNSICategoriesPipeline": 700,
-    "locations.pipelines.count_categories.CountCategoriesPipeline": 800,
-    "locations.pipelines.count_brands.CountBrandsPipeline": 810,
+    # Huq: These flood the stats objects with keys for every spider - we can aggregate them trivally in BigQuery
+    # "locations.pipelines.count_categories.CountCategoriesPipeline": 800,
+    # "locations.pipelines.count_brands.CountBrandsPipeline": 810,
+    "locations.pipelines.huq_adjust.HuqAdjustPipeline": 99999,
 }
-
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -142,7 +147,6 @@ REQUESTS_CACHE_BACKEND_SETTINGS = {
     "backend": "filesystem",
     "wal": True,
 }
-
 
 # HUQ
 # Configure item pipelines
@@ -204,4 +208,32 @@ SPIDERMON_SENTRY_DSN = "not a valid dsn"  # Override in settings on Zyte
 SPIDERMON_SENTRY_PROJECT_NAME = "poi-finder"
 SPIDERMON_SENTRY_ENVIRONMENT_TYPE = "local"  # Override in settings on Zyte
 
+STATS_CLASS = "spidermon.contrib.stats.statscollectors.local_storage.LocalStorageStatsHistoryCollector"
+
 ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte
+
+FEED_URI_PARAMS = feed_uri_params
+
+FEEDS = {
+    "./out/%(name)s-%(batch_id)05d.jl": {
+        "format": "jsonlines",
+        "encoding": "utf8",
+        # When a spider yields a high number of POIs, uploading the file might time out.
+        "batch_item_count": 100000,
+    }
+}
+
+# Example production config
+# FEEDS = {
+#     "gs://%(bucket)s/%(env)s/dt=%(schedule_date)s/%(spider_name)s-%(batch_id)05d.jl": {
+#         "format": "jsonlines",
+#         "encoding": "utf8",
+#         "batch_item_count": 100000,
+#     }}
+# GCS_BUCKET = "alltheplaces"
+#
+# STACKDRIVER_LOGGER = {
+#     "enabled": True,
+#     "project_id": "huq-jimbo",
+#     "log_level": "INFO",
+# }
