@@ -33,11 +33,11 @@ class GoogleFirestoreCollector(StatsCollector):
     def __init__(self, crawler):
         super().__init__(crawler)
         self.env = None
-        self.spider = None
         self.firestore_client = None
 
-    def _document(self):
-        return self.firestore_client.collection(f"atp_stats_history-{self.env}").document(self.spider.name)
+
+    def _document(self, spider):
+        return self.firestore_client.collection(f"atp_stats_history-{self.env}").document(spider.name)
 
     def open_spider(self, spider):
         settings = spider.crawler.settings
@@ -45,13 +45,12 @@ class GoogleFirestoreCollector(StatsCollector):
             "SPIDERMON_MAX_STORED_STATS", default=100
         )
         self.env = settings.get("ENV")
-        self.spider = spider
 
         cred = credentials.ApplicationDefault()
         firebase_admin.initialize_app(cred, options={"projectId": settings.get("GCP_PROJECT_ID")})
         self.firestore_client = firestore.client()
 
-        doc = self._document().get().to_dict()
+        doc = self._document(spider).get().to_dict()
         spider.stats_history = deque(
             [compress_dict(s) for s in doc["entries"]] if doc is not None else [],
             maxlen=max_stored_stats
@@ -62,7 +61,7 @@ class GoogleFirestoreCollector(StatsCollector):
     def _persist_stats(self, stats, spider):
         spider.stats_history.appendleft(self._stats)
 
-        self._document().set(
+        self._document(spider).set(
             {
                 "entries": [expand_dict(s) for s in spider.stats_history]
             }
