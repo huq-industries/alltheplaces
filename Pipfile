@@ -35,7 +35,6 @@ ijson = "*"
 tzdata = "*"
 unidecode = "*"
 pygeohash = "*"
-pyyaml = "==5.4.1"
 scrapy-zyte-smartproxy = "*"
 spidermon = {version = "*", extras = ["monitoring", "validation"]}
 google-cloud-storage = "*"
