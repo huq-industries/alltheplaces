@@ -89,7 +89,7 @@ DOWNLOADER_MIDDLEWARES["scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware"] = 610
 =======
 DOWNLOADER_MIDDLEWARES = {
     "locations.middlewares.cdnstats.CDNStatsMiddleware": 500,
-    "scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware": 610,
+    "locations.middlewares.smartproxy_bridge.SmartProxyBridgeMiddleware": 610,
 }
 >>>>>>> c72a6ab8 (fix: Deploy ATP on Zyte)
 
