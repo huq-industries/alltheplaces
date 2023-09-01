@@ -1,6 +1,7 @@
 import logging
-import re
 import os
+import re
+
 import scrapy
 
 from locations.items import Feature

@@ -25,5 +25,5 @@ include locations/searchable_points/us_centroids_25mile_radius_state.csv
 include locations/searchable_points/us_centroids_50mile_radius.csv
 include locations/searchable_points/us_centroids_50mile_radius_state.csv
 include locations/searchable_points/country_coordinates.json
-include locations/searchable_points/frzips.csv.gz
-include locations/searchable_points/uszips.csv.gz
+include locations/searchable_points/postcodes/frzips.csv.gz
+include locations/searchable_points/postcodes/uszips.csv.gz

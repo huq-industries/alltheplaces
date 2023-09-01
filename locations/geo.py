@@ -5,7 +5,7 @@ import math
 
 import geonamescache
 
-from locations.searchable_points import open_searchable_points, get_searchable_points_path
+from locations.searchable_points import get_searchable_points_path, open_searchable_points
 
 # Radius of the Earth in kilometers
 EARTH_RADIUS = 6378.1
