@@ -15,6 +15,7 @@ class Categories(Enum):
     BICYCLE_RENTAL = {"amenity": "bicycle_rental"}
     CAR_RENTAL = {"amenity": "car_rental"}
     CAR_WASH = {"amenity": "car_wash"}
+    PARKING = {"amenity": "parking"}
 
     BUS_STOP = {"highway": "bus_stop", "public_transport": "platform"}
     BUS_STATION = {"amenity": "bus_station", "public_transport": "station"}
@@ -185,6 +186,8 @@ top_level_tags = [
     "public_transport",
     "shop",
     "tourism",
+    "aeroway",
+    "railway",
 ]
 
 
@@ -200,6 +203,8 @@ def get_category_tags(source) -> {}:
     for top_level_tag in top_level_tags:
         if v := tags.get(top_level_tag):
             categories[top_level_tag] = v
+    if len(categories.keys()) > 1 and categories.get("shop") == "yes":
+        categories.pop("shop")
     return categories or None
 
 
@@ -220,6 +225,7 @@ class Fuel(Enum):
     OCTANE_91 = "fuel:octane_91"
     OCTANE_92 = "fuel:octane_92"
     OCTANE_93 = "fuel:octane_93"
+    OCTANE_94 = "fuel:octane_94"
     OCTANE_95 = "fuel:octane_95"
     OCTANE_97 = "fuel:octane_97"
     OCTANE_98 = "fuel:octane_98"
@@ -266,7 +272,10 @@ class Extras(Enum):
     INDOOR_SEATING = "indoor_seating"
     OIL_CHANGE = "service:vehicle:oil_change"
     OUTDOOR_SEATING = "outdoor_seating"
+    PARKING_PARENT = "capacity:parent"
+    PARKING_WHEELCHAIR = "capacity:disabled"
     PRINTING = "service:print"
+    SELF_CHECKOUT = "self_checkout"
     SCANING = "service:scan"
     SHOWERS = "shower"
     SMOKING_AREA = "smoking=isolated"
@@ -274,6 +283,7 @@ class Extras(Enum):
     TOILETS = "toilets"
     TOILETS_WHEELCHAIR = "toilets:wheelchair"
     TRUCK_WASH = "truck_wash"
+    VACUUM_CLEANER = "vacuum_cleaner"
     WHEELCHAIR = "wheelchair"
     WIFI = "internet_access=wlan"
 
@@ -344,10 +354,12 @@ class FuelCards(Enum):
     LUKOIL = "payment:lukoil"  # https://lukoil.ru/Products/business/fuelcards
     LUKOIL_LOYALTY_PROGRAM = "fuel:discount:lukoil"
     MOBIL = "Mobilcard"
+    OMV = "payment:omv"  # https://www.omv.com/en/customers/services/fuel-cards
     PETROL_PLUS_REGION = "payment:petrol_plus_region"  # https://www.petrolplus.ru/
     SHELL = "fuel:discount:shell"
     UTA = "fuel:discount:uta"
     ROSNEFT = "payment:rosneft"  # https://www.rn-card.ru/
+    ROUTEX = "payment:routex"  # https://routex.com/
 
 
 def apply_yes_no(attribute, item: Feature, state: bool, apply_positive_only: bool = True):
