@@ -71,7 +71,7 @@ TELNETCONSOLE_ENABLED = False
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
     "locations.middlewares.cdnstats.CDNStatsMiddleware": 500,
-    "scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware": 610,
+    "locations.middlewares.smartproxy_bridge.SmartProxyBridgeMiddleware": 610,
 }
 
 # Enable or disable extensions
