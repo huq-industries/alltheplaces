@@ -1,8 +1,10 @@
 import base64
 import json
+import time
 
 import scrapy
 
+from locations.hours import OpeningHours
 from locations.items import Feature
 
 
@@ -10,6 +12,7 @@ class RalphLaurenSpider(scrapy.Spider):
     name = "ralph_lauren"
     allowed_domains = ["www.ralphlauren.com"]
     start_urls = ("https://www.ralphlauren.com/Stores-ShowCountries",)
+    # start_urls = ("https://www.ralphlauren.com/Stores-Details?StoreID=474",)
 
     def parse(self, response):
         # gather URLs of all countries
@@ -35,20 +38,28 @@ class RalphLaurenSpider(scrapy.Spider):
         # get json which provides most of the data
         data = response.xpath('//div[@class="storeJSON hide"]/@data-storejson').extract_first()
 
-        # opening hourse are not in json, thus need to be scraped seperately
+        # opening hours are not in json, thus need to be scraped separately
         hours = response.xpath('//tr[@class="store-hourrow"]//td//text()').getall()
-        opening_hours = []
+        opening_hours = OpeningHours()
 
-        for i in hours:
-            opening_hours.append(i.strip())
+        # a few stores have a slightly different format with no : and more whitespace
+        if len(hours) > 7:
+            hours = [f"{i}: {j}" for i, j in zip(hours[::2], hours[1::2])]
+
+        for h in hours:
+            hours_text = h.replace(" ", "")
+            day = hours_text[:3]
+            for session in hours_text[4:].split(","):
+                if session == "CLOSED":
+                    continue
+                hrs = [time.strptime(t.zfill(7), "%I:%M%p") for t in session.split("-")]
+                opening_hours.add_range(day, hrs[0], hrs[1])
 
         # some stores have a second address line which is not in the json
-        store_address = response.xpath('//p[@class="store-address"]/text()').extract()
-
-        if len(store_address) == 6:
-            address = store_address[0].strip()
-        else:
-            address = "\n".join([store_address[0].strip(), store_address[1].strip()])
+        store_address = response.xpath('//div[@class="store-info-container"]/div/span/text()').extract()
+        stripped_address = [s.strip() for s in store_address]
+        # last two elements are ["City, ST ZIP", "Country"]
+        street_address = ", ".join(stripped_address[:-2])
 
         if data:
             data = json.loads(data)[0]
@@ -63,12 +74,15 @@ class RalphLaurenSpider(scrapy.Spider):
                 "lat": data.get("latitude", None),
                 "lon": data.get("longitude", None),
                 "phone": data.get("phone", None),
-                "addr_full": address,
+                "street_address": street_address,
                 "state": data.get("stateCode", None),
                 "city": data.get("city", None),
                 "country": data.get("countryCode", None),
                 "postcode": data.get("postalCode", None),
                 "opening_hours": opening_hours,
+                "extras": {
+                    "full_address": stripped_address,
+                },
             }
 
             yield Feature(**properties)
