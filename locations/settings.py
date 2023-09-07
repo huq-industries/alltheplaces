@@ -117,6 +117,8 @@ ITEM_PIPELINES = {
     "locations.pipelines.huq_adjust.HuqAdjustPipeline": 99999,
 }
 
+LOG_FORMATTER = "locations.logformatter.DebugDuplicateLogFormatter"
+
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # AUTOTHROTTLE_ENABLED = True
