@@ -83,7 +83,6 @@ DOWNLOADER_MIDDLEWARES = {
 EXTENSIONS = {
     "locations.extensions.google_auth.GoogleAuthExtension": 10,
     "locations.extensions.stackdriver_logger.StackdriverLoggerExtension": 100,
-    "locations.extensions.log_stats.LogStatsExtension": 101,
 }
 
 # Configure item pipelines
