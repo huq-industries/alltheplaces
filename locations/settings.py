@@ -223,6 +223,8 @@ FEEDS = {
     }
 }
 
+LOG_FORMATTER = "locations.logformatter.DebugDuplicateLogFormatter"
+
 # Example production config
 # FEEDS = {
 #     "gs://%(bucket)s/%(env)s/dt=%(schedule_date)s/%(spider_name)s-%(batch_id)05d.jl": {
