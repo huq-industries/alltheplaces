@@ -30,9 +30,5 @@ jobs:
           pipenv install --dev
       - name: Schedule spiders
         shell: bash
-        # Currently reverse sort the list so that western_union, usps and visa
-        # run earlier and don't hold up the whole process at the end
-        # (long-term decision pending on excluding them)
-        # Priority 0 while we only have one container group - dev spiders will run first
         run: |
-          pipenv run scrapy list | xargs -n1 | sort -r | xargs -P 10 -I § pipenv run shub schedule -p 0 $SHUB_PROJECTID/§
+          pipenv run scrapy schedule_all

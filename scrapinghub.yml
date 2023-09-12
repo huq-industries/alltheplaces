@@ -3,6 +3,7 @@ stacks:
 
 projects:
   default: 668973
+  prod: 686157
 
 requirements:
   file: Pipfile

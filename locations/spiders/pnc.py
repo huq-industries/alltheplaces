@@ -10,6 +10,7 @@ class PNCSpider(scrapy.Spider):
     item_attributes = {"brand": "PNC", "brand_wikidata": "Q38928", "country": "US"}
     allowed_domains = ["www.pnc.com"]
     custom_settings = {"ROBOTSTXT_OBEY": False}
+    zyte_units = 2
 
     def start_requests(self):
         for lat, lon in point_locations("us_centroids_100mile_radius.csv"):
