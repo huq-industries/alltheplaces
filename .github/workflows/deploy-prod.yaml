@@ -30,4 +30,4 @@ jobs:
           pipenv install --dev
       - name: Deploy code to scrapy cloud
         shell: bash
-        run: shub deploy ${SHUB_PROJECTID} --version "master-${GITHUB_SHA}"
+        run: pipenv run shub deploy ${SHUB_PROJECTID} --version "master-${GITHUB_SHA}"

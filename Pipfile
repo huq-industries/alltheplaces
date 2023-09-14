@@ -16,7 +16,7 @@ pipenv = "*"
 bigquery-schema-generator = "*"
 
 [packages]
-scrapy = "2.9.0"
+scrapy = "2.10.1"
 pygithub = "*"
 python-json-logger = "*"
 geonamescache = "*"
