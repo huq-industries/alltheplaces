@@ -12,6 +12,7 @@ class VisaSpider(Spider):
     name = "visa"
     no_refs = True
     custom_settings = {"AUTOTHROTTLE_ENABLED": True, "RETRY_TIMES": 5}
+    zyte_priority = 1
 
     offset = 0
     page_size = 1000

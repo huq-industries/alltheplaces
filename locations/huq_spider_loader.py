@@ -97,4 +97,7 @@ class HuqSpiderLoader(SpiderLoader):
         """
         Return a dict with the names of all spiders available in the project and their scheduling config.
         """
-        return {k: getattr(v, "zyte_units", 1) for k, v in self._spiders.items()}
+        return {k: {
+            "priority": getattr(v, "zyte_priority", 0),
+            "units": getattr(v, "zyte_units", 1),
+        } for k, v in self._spiders.items()}

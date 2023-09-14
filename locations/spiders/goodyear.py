@@ -12,6 +12,7 @@ class GoodyearSpider(SitemapSpider):
     sitemap_urls = ["https://www.goodyear.eu/robots.txt"]
     sitemap_follow = [r"/(?!ru_ru)[a-z]{2}_[a-z]{2}/consumer.dealers-sitemap.xml"]
     sitemap_rules = [(r"\/dealers\/\d+\/", "parse_store")]
+    zyte_priority = 1
 
     def parse_store(self, response):
         item = Feature()
