@@ -18,6 +18,7 @@ from .utils import feed_uri_params
 ENV = "local"
 BOT_NAME = "locations-h"
 
+SPIDER_LOADER_CLASS = "locations.huq_spider_loader.HuqSpiderLoader"
 SPIDER_MODULES = ["locations.spiders"]
 NEWSPIDER_MODULE = "locations.spiders"
 COMMANDS_MODULE = "locations.commands"
