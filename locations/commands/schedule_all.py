@@ -15,4 +15,5 @@ class Command(ScrapyCommand):
         for spider, conf in spiders.items():
             priority = conf['priority']
             units = conf['units']
-            subprocess.run(["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"prod/{spider}"])
+            #subprocess.run(["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"prod/{spider}"])
+            print(" ".join(["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"prod/{spider}"]))
