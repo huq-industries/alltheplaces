@@ -31,4 +31,4 @@ jobs:
       - name: Schedule spiders
         shell: bash
         run: |
-          pipenv run scrapy schedule_all
+          pipenv run scrapy schedule_all ${{ secrets.scrapycloud_project_id }}
