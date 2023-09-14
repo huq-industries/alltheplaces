@@ -201,9 +201,9 @@ def bbox_to_geojson(bounds):
     return polygon
 
 
-def country_coordinates(return_lookup=False):
+def country_coordinates():
     """
-    Return a list of records with ISO 3166-2 alpha-2 country codes and
+    Return a dictionary of ISO 3166-2 alpha-2 country codes with
     coordinates approximating a centroid of the largest landmass
     or multiple largest landmasses for countries with multiple
     landmasses.
@@ -212,11 +212,6 @@ def country_coordinates(return_lookup=False):
     that then expects to reverse geocode a country from the supplied
     coordinates.
 
-    :return A list of ISO 3166-2 alpha-2 country codes with corresponding latitude and longitude for each country.
-            If return_lookup is True, return a dict of ISO 3166-2 alpha-2 to (lat, lon) instead.
+    :return A dictionary of ISO 3166-2 alpha-2 country codes with corresponding latitude and longitude for each country.
     """
-    file = json.load(open_searchable_points("country_coordinates.json"))
-    if return_lookup:
-        return {row["isocode"]: (row["lat"], row["lon"]) for row in file}
-    else:
-        return file
+    return json.load(open_searchable_points("country_coordinates.json"))

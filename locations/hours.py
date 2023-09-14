@@ -13,8 +13,6 @@ DAYS_FULL = [
     "Sunday",
 ]
 
-DAYS_AT = {"Mo": "Mo", "Di": "Tu", "Mi": "We", "Do": "Th", "Fr": "Fr", "Sa": "Sa", "So": "Su"}
-
 DAYS_EN = {
     "Monday": "Mo",
     "Mon": "Mo",
@@ -347,9 +345,7 @@ DAYS_ES = {
     "Martes": "Tu",
     "Mar": "Tu",
     "Ma": "Tu",
-    "Miercoles": "We",
     "Miércoles": "We",
-    "Mie": "We",
     "Mié": "We",
     "Mi": "We",
     "Jueves": "Th",
@@ -358,9 +354,7 @@ DAYS_ES = {
     "Viernes": "Fr",
     "Vie": "Fr",
     "Vi": "Fr",
-    "Sabado": "Sa",
     "Sábado": "Sa",
-    "Sab": "Sa",
     "Sáb": "Sa",
     "Sa": "Sa",
     "Domingo": "Su",
@@ -406,7 +400,6 @@ DELIMITERS_EN = {
     "from",
     "thru",
     "through",
-    "until",
 }
 
 DELIMITERS_ES = {

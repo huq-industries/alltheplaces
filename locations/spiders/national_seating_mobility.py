@@ -1,7 +1,7 @@
-from locations.storefinders.store_locator_plus_cloud import StoreLocatorPlusCloudSpider
+from locations.storefinders.store_locator_plus import StoreLocatorPlusSpider
 
 
-class NationalSeatingMobilitySpider(StoreLocatorPlusCloudSpider):
+class NationalSeatingMobilitySpider(StoreLocatorPlusSpider):
     name = "national_seating_mobility"
     item_attributes = {"brand": "National Seating & Mobility", "brand_wikidata": "Q116770969"}
     slp_dataset = "thegeneral_at_5by5agency_dot_com"

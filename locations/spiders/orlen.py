@@ -109,7 +109,6 @@ class OrlenSpider(scrapy.Spider):
         apply_yes_no(Extras.COMPRESSED_AIR, item, "Compressor" in services_names)
         apply_yes_no(Extras.ATM, item, "Cash point" in services_names)
 
-        # TODO: output separate item for charging station
         if "Electric car chargers" in services_names:
             apply_category(Categories.CHARGING_STATION, item)
 
@@ -135,5 +134,4 @@ class OrlenSpider(scrapy.Spider):
                 item["opening_hours"] = OpeningHours()
                 item["opening_hours"].add_days_range(DAYS, match.group(1) + ":00", match.group(2) + ":00")
 
-        apply_category(Categories.FUEL_STATION, item)
         yield item
