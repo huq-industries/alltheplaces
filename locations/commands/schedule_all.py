@@ -1,5 +1,3 @@
-import subprocess
-
 from scrapy.commands import ScrapyCommand
 
 
@@ -13,7 +11,7 @@ class Command(ScrapyCommand):
     def run(self, args, opts):
         spiders = self.crawler_process.spider_loader.list_schedule()
         for spider, conf in spiders.items():
-            priority = conf['priority']
-            units = conf['units']
-            #subprocess.run(["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"prod/{spider}"])
+            priority = conf["priority"]
+            units = conf["units"]
+            # subprocess.run(["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"prod/{spider}"])
             print(" ".join(["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"prod/{spider}"]))
