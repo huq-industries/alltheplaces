@@ -1,5 +1,5 @@
 stacks:
-  default: "scrapy:2.9"
+  default: "scrapy:2.10"
 
 projects:
   default: 668973
