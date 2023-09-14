@@ -69,7 +69,6 @@ TELNETCONSOLE_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-<<<<<<< HEAD
 DOWNLOADER_MIDDLEWARES = {}
 
 if os.environ.get("ZYTE_API_KEY"):
@@ -86,12 +85,6 @@ if os.environ.get("ZYTE_API_KEY"):
 
 DOWNLOADER_MIDDLEWARES["locations.middlewares.cdnstats.CDNStatsMiddleware"] = 500
 DOWNLOADER_MIDDLEWARES["scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware"] = 610
-=======
-DOWNLOADER_MIDDLEWARES = {
-    "locations.middlewares.cdnstats.CDNStatsMiddleware": 500,
-    "locations.middlewares.smartproxy_bridge.SmartProxyBridgeMiddleware": 610,
-}
->>>>>>> c72a6ab8 (fix: Deploy ATP on Zyte)
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -168,16 +161,6 @@ REQUESTS_CACHE_BACKEND_SETTINGS = {
     "wal": True,
 }
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
->>>>>>> c72a6ab8 (fix: Deploy ATP on Zyte)
-=======
->>>>>>> 0151d70a (feat: GCP Compatibility)
->>>>>>> alltheplaces-master
 # HUQ
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
@@ -238,13 +221,6 @@ SPIDERMON_SENTRY_DSN = "not a valid dsn"  # Override in settings on Zyte
 SPIDERMON_SENTRY_PROJECT_NAME = "poi-finder"
 SPIDERMON_SENTRY_ENVIRONMENT_TYPE = "local"  # Override in settings on Zyte
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 0151d70a (feat: GCP Compatibility)
->>>>>>> alltheplaces-master
 STATS_CLASS = "spidermon.contrib.stats.statscollectors.local_storage.LocalStorageStatsHistoryCollector"
 
 ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte
@@ -274,12 +250,5 @@ FEEDS = {
 #     "project_id": "huq-jimbo",
 #     "log_level": "INFO",
 # }
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
+
 ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte
->>>>>>> c72a6ab8 (fix: Deploy ATP on Zyte)
-=======
->>>>>>> 0151d70a (feat: GCP Compatibility)
->>>>>>> alltheplaces-master
