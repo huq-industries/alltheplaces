@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ccea9a65a0f0c2dfdf7b0ed3ffe0bb586a0a78c159453e7dfacfcc1200b3bd49"
+            "sha256": "0ef085f83c85d1149db569cdef520972bffa3ccb51792fc8ca063cdfa9e01b0e"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -2089,14 +2089,6 @@
             ],
             "index": "pypi",
             "version": "==0.11.1"
-        },
-        "scrapy-zyte-smartproxy": {
-            "hashes": [
-                "sha256:a4a91549be7e4847a11a6283f388f4b5a9eaff4d55ba9bb77acaceaa65a62fb6",
-                "sha256:f1b26e1aaaa838c4b43292fc004c3c8beb552b6b9bbfc3471e942f763db94a4e"
-            ],
-            "index": "pypi",
-            "version": "==2.2.0"
         },
         "sentry-sdk": {
             "hashes": [

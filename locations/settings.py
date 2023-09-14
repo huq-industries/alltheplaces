@@ -85,7 +85,6 @@ if os.environ.get("ZYTE_API_KEY"):
     TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 
 DOWNLOADER_MIDDLEWARES["locations.middlewares.cdnstats.CDNStatsMiddleware"] = 500
-DOWNLOADER_MIDDLEWARES["scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware"] = 610
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -224,8 +223,6 @@ SPIDERMON_SENTRY_ENVIRONMENT_TYPE = "local"  # Override in settings on Zyte
 
 STATS_CLASS = "spidermon.contrib.stats.statscollectors.local_storage.LocalStorageStatsHistoryCollector"
 
-ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte
-
 FEED_URI_PARAMS = feed_uri_params
 
 FEEDS = {
@@ -251,5 +248,3 @@ FEEDS = {
 #     "project_id": "huq-jimbo",
 #     "log_level": "INFO",
 # }
-
-ZYTE_SMARTPROXY_ENABLED = False  # Override in settings on Zyte

@@ -39,7 +39,6 @@ scrapy-zyte-api = "*"
 cryptography = "*"
 pyyaml = "*"
 botocore = "*"
-scrapy-zyte-smartproxy = "*"
 spidermon = {version = "*", extras = ["monitoring", "validation"]}
 google-cloud-storage = "*"
 awscli = "*"
