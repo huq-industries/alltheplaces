@@ -1,35 +1,24 @@
 import re
-
 from scrapy.spiders import SitemapSpider
-
 from locations.items import Feature
 
-
 class DominosPizzaDESpider(SitemapSpider):
-    name = "dominos_pizza_de"
-    item_attributes = {"brand": "Domino's", "brand_wikidata": "Q839466"}
-    allowed_domains = ["dominos.de"]
-    sitemap_urls = ["https://www.dominos.de/sitemap.aspx"]
-    url_regex = r"https:\/\/www\.dominos\.de\/filiale\/([\w]+)-([\w]+)-([\d]+)$"
-    sitemap_rules = [(url_regex, "parse_store")]
+    name = 'dominos_pizza_de'
+    item_attributes = {'brand': "Domino's", 'brand_wikidata': 'Q839466'}
+    allowed_domains = ['dominos.de']
+    sitemap_urls = ['https://www.dominos.de/sitemap.aspx']
+    url_regex = 'https:\\/\\/www\\.dominos\\.de\\/filiale\\/([\\w]+)-([\\w]+)-([\\d]+)$'
+    sitemap_rules = [(url_regex, 'parse_store')]
 
     def parse_store(self, response):
         match = re.match(self.url_regex, response.url)
         ref = match.group(3)
         country = match.group(1)
         address_data = response.xpath('//a[@id="open-map-address"]/text()').extract()
-        locality_data = re.match(r"(\d+)? ?([-\ \w'À-Ÿ()]+)$", address_data[1].strip())
-        properties = {
-            "ref": ref,
-            "name": response.xpath('//h1[@class="storetitle"]/text()').extract_first(),
-            "street_address": address_data[0].strip().strip(","),
-            "country": country,
-            "lat": response.xpath('//input[@id="store-lat"]/@value').get().replace(",", "."),
-            "lon": response.xpath('//input[@id="store-lon"]/@value').get().replace(",", "."),
-            "website": response.url,
-        }
+        locality_data = re.match("(\\d+)? ?([-\\ \\w'À-Ÿ()]+)$", address_data[1].strip())
+        properties = {'ref': ref, 'name': response.xpath('//h1[@class="storetitle"]/text()').extract_first(), 'street_address': address_data[0].strip().strip(','), 'country': country, 'lat': response.xpath('//input[@id="store-lat"]/@value').get().replace(',', '.'), 'lon': response.xpath('//input[@id="store-lon"]/@value').get().replace(',', '.'), 'website': response.url}
         if locality_data:
-            properties["city"] = locality_data.group(2)
-            properties["postcode"] = locality_data.group(1)
-
+            properties['city'] = locality_data.group(2)
+            properties['postcode'] = locality_data.group(1)
         yield Feature(**properties)
+    new_property = None
