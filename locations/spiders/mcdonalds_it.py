@@ -1,17 +1,18 @@
 import scrapy
-
 from locations.dict_parser import DictParser
 from locations.spiders.mcdonalds import McDonaldsSpider
 
-
 class McDonaldsITSpider(scrapy.Spider):
-    name = "mcdonalds_it"
+    name = 'mcdonalds_it'
     item_attributes = McDonaldsSpider.item_attributes
-    start_urls = ["https://www.mcdonalds.it/static/json/store_locator.json"]
+    start_urls = ['https://www.mcdonalds.it/static/json/store_locator.json']
 
     def parse(self, response):
-        for store in response.json()["sites"]:
-            store["street_address"] = store.pop("address")
+        for store in response.json()['sites']:
+            store['street_address'] = store.pop('address')
             item = DictParser.parse(store)
-            item["website"] = "https://www.mcdonalds.it/ristorante/" + store["uri"]
+            item['website'] = 'https://www.mcdonalds.it/ristorante/' + store['uri']
             yield item
+    requires_proxy = True
+    requires_proxy = True
+    requires_proxy = True
