@@ -56,5 +56,3 @@ class RonaSpider(scrapy.Spider):
         if hours:
             properties["opening_hours"] = self.parse_hours(hours)
         yield Feature(**properties)
-
-

@@ -19,5 +19,3 @@ class NewLookGB(SitemapSpider, StructuredDataSpider):
     def inspect_item(self, item, response):
         item["website"] = response.urljoin(item["website"])
         yield item
-
-

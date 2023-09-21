@@ -20,4 +20,3 @@ class FamousFootwearSpider(SitemapSpider, StructuredDataSpider):
         matches = re.search('location: \\["(.*)", "(.*)"\\],', response.text)
         item["lat"], item["lon"] = (matches[1], matches[2])
         yield item
-

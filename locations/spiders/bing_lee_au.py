@@ -35,4 +35,3 @@ class BingLeeAUSpider(SitemapSpider, StructuredDataSpider):
                     oh.add_range(day, f"{open_h}:{open_m}:{open_s}", f"{close_h}:{close_m}:{close_s}", "%H:%M:%S")
         item["opening_hours"] = oh.as_opening_hours()
         yield item
-
