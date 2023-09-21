@@ -21,4 +21,4 @@ class PopeyesSpider(SitemapSpider, StructuredDataSpider):
         item["postcode"] = response.xpath('//address//span[contains(@class, "Address-postalCode")]/text()').get()
         yield item
 
-    new_property = None
+    requires_proxy = True

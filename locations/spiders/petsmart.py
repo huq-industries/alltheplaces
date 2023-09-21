@@ -84,4 +84,4 @@ class PetSmartSpider(scrapy.Spider):
             )
         return opening_hours.as_opening_hours()
 
-    new_property = None
+    requires_proxy = True

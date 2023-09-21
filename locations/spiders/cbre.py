@@ -44,4 +44,4 @@ class CBRESpider(scrapy.Spider):
             else:
                 pass
 
-    new_property = None
+    requires_proxy = True

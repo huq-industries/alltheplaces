@@ -46,4 +46,4 @@ class HyattSpider(scrapy.Spider):
         for url in urls:
             yield scrapy.Request(response.urljoin(url), headers={"Referer": None}, callback=self.parse_hotel)
 
-    new_property = None
+    requires_proxy = True

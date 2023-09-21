@@ -10,4 +10,3 @@ class JDSportsGBSpider(CrawlSpider, StructuredDataSpider):
     start_urls = ["https://www.jdsports.co.uk/store-locator/all-stores/"]
     rules = [Rule(LinkExtractor(allow="store-locator/", deny="-soon"), callback="parse_sd")]
     requires_proxy = True
-    new_property = None

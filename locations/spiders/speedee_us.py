@@ -11,4 +11,4 @@ class SpeeDeeUSSpider(AgileStoreLocatorSpider):
             item["name"], item["ref"] = item["name"].split(" - #", 1)
         yield item
 
-    new_property = None
+    requires_proxy = True

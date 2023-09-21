@@ -33,4 +33,4 @@ class GapUSSpider(SitemapSpider, StructuredDataSpider):
         apply_category(Categories.SHOP_CLOTHES, item)
         yield item
 
-    new_property = None
+    requires_proxy = True

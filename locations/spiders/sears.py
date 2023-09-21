@@ -42,4 +42,4 @@ class SearsSpider(scrapy.spiders.SitemapSpider):
             properties.update({"brand": "Sears Outlet", "brand_wikidata": "Q20080412"})
         yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

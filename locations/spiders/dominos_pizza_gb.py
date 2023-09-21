@@ -10,4 +10,4 @@ class DominiosGB(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://www.dominos.co.uk/pizza-near-me/sitemap.xml"]
     sitemap_rules = [("https:\\/\\/www\\.dominos\\.co\\.uk\\/pizza-near-me\\/[-.\\w]+\\/([-.\\w]+)$", "parse_sd")]
     user_agent = BROWSER_DEFAULT
-    new_property = None
+    requires_proxy = True

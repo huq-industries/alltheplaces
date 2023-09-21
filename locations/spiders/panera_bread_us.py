@@ -10,4 +10,4 @@ class PaneraBreadUSSpider(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://locations.panerabread.com/robots.txt"]
     sitemap_rules = [("/\\w\\w/[-\\w]+/[-\\w]+\\.html$", "parse_sd")]
     wanted_types = ["CafeOrCoffeeShop"]
-    new_property = None
+    requires_proxy = True

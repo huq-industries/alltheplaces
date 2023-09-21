@@ -63,4 +63,4 @@ class ShopriteSpider(scrapy.Spider):
                 oh.add_range(days[0], start_time, end_time, "%I:%M%p")
             return oh.as_opening_hours()
 
-    new_property = None
+    requires_proxy = True

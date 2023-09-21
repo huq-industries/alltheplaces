@@ -51,4 +51,4 @@ class MaverikSpider(scrapy.Spider):
             apply_yes_no(Fuel.E15, item, "E15" in store_fuels)
             yield item
 
-    new_property = None
+    requires_proxy = True

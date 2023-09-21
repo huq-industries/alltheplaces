@@ -9,6 +9,7 @@ class NewLookGB(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://www.newlook.com/uk/sitemap/maps/sitemap_uk_pos_en_1.xml"]
     sitemap_rules = [("https:\\/\\/www\\.newlook\\.com\\/uk\\/store\\/[-\\w]+-(\\d+)$", "parse_sd")]
     wanted_types = ["Store"]
+    requires_proxy = True
 
     def sitemap_filter(self, entries):
         for entry in entries:
@@ -19,6 +20,4 @@ class NewLookGB(SitemapSpider, StructuredDataSpider):
         item["website"] = response.urljoin(item["website"])
         yield item
 
-    new_property = None
-    new_property = None
-    new_property = None
+

@@ -29,4 +29,4 @@ class SephoraBRSpider(Spider):
             properties["ref"] = properties["name"].lower().replace(" ", "_")
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

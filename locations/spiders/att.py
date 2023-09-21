@@ -20,4 +20,4 @@ class ATTSpider(SitemapSpider, StructuredDataSpider):
         item["name"] = name
         yield item
 
-    new_property = None
+    requires_proxy = True

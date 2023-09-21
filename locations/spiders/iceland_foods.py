@@ -24,4 +24,4 @@ class IcelandFoodsSpider(SitemapSpider, StructuredDataSpider):
             item["phone"] = phone.strip()
         yield item
 
-    new_property = None
+    requires_proxy = True

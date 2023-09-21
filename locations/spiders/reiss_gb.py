@@ -18,4 +18,4 @@ class ReissGBSpider(SitemapSpider, StructuredDataSpider):
             item["lat"], item["lon"] = m.groups()
         yield item
 
-    new_property = None
+    requires_proxy = True

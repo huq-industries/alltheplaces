@@ -128,4 +128,4 @@ class KrogerUSSpider(SitemapSpider):
         oh.add_ranges_from_string(hours_string)
         return oh
 
-    new_property = None
+    requires_proxy = True

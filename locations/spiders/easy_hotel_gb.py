@@ -19,4 +19,4 @@ class EasyHotelGB(SitemapSpider, StructuredDataSpider):
         item["state"] = None
         yield item
 
-    new_property = None
+    requires_proxy = True

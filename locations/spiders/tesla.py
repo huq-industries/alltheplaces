@@ -59,4 +59,4 @@ class TeslaSpider(scrapy.Spider):
             apply_category(Categories.SHOP_CAR_REPAIR, feature)
         yield feature
 
-    new_property = None
+    requires_proxy = True

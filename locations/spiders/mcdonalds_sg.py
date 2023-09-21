@@ -44,4 +44,4 @@ class McDonaldsSGSpider(scrapy.Spider):
                 properties["opening_hours"] = opening_hours
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

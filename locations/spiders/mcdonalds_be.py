@@ -45,4 +45,4 @@ class McDonaldsBESpider(Spider):
             apply_yes_no(Extras.WIFI, item, 1 in service_ids, False)
             yield item
 
-    new_property = None
+    requires_proxy = True

@@ -16,4 +16,4 @@ class McDonaldsITSpider(scrapy.Spider):
             item["website"] = "https://www.mcdonalds.it/ristorante/" + store["uri"]
             yield item
 
-    new_property = None
+    requires_proxy = True

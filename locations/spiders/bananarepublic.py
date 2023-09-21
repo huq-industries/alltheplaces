@@ -24,4 +24,4 @@ class BananaRepublicSpider(scrapy.spiders.SitemapSpider):
                     item["country"] = "US"
                 yield item
 
-    new_property = None
+    requires_proxy = True

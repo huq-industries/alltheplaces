@@ -78,4 +78,4 @@ class BJsWholesaleSpider(scrapy.Spider):
                     callback=self.parse_store,
                 )
 
-    new_property = None
+    requires_proxy = True

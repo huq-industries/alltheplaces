@@ -70,4 +70,4 @@ class GiantEagleSpider(scrapy.Spider):
             page += self.items_per_page
             yield scrapy.Request(url=page_regex.sub("skip={}".format(page), response.url), dont_filter=True)
 
-    new_property = None
+    requires_proxy = True

@@ -67,4 +67,4 @@ class AllstateInsuranceAgentsSpider(scrapy.Spider):
             else:
                 yield scrapy.Request(response.urljoin(path), callback=self.parse_state)
 
-    new_property = None
+    requires_proxy = True

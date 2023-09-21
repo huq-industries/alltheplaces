@@ -82,4 +82,4 @@ class MisterCarWashSpider(scrapy.Spider):
                 country=country,
             )
 
-    new_property = None
+    requires_proxy = True

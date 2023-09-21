@@ -22,4 +22,4 @@ class PiadaUSSpider(Spider):
             location["website"] = f"https://mypiada.com/locations/{location['slug']}"
             yield DictParser.parse(location)
 
-    new_property = None
+    requires_proxy = True

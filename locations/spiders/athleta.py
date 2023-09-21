@@ -68,4 +68,4 @@ class AthletaSpider(scrapy.Spider):
         }
         yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

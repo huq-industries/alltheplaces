@@ -75,4 +75,4 @@ class LowesSpider(scrapy.Spider):
         for url in urls:
             yield scrapy.Request(url, callback=self.parse_store)
 
-    new_property = None
+    requires_proxy = True

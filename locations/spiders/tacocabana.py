@@ -49,4 +49,4 @@ class TacocabanaSpider(scrapy.Spider):
         if next_url:
             yield self.request(next_url)
 
-    new_property = None
+    requires_proxy = True

@@ -29,4 +29,4 @@ class TUISpider(SitemapSpider):
             item["located_in_wikidata"] = "Q246655"
         return item
 
-    new_property = None
+    requires_proxy = True

@@ -51,4 +51,4 @@ class DiscountTireSpider(SitemapSpider):
             }
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

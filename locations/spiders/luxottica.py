@@ -58,4 +58,4 @@ class LuxotticaSpider(scrapy.Spider):
             for path in urls:
                 yield scrapy.Request(url=response.urljoin(path), callback=self.parse)
 
-    new_property = None
+    requires_proxy = True

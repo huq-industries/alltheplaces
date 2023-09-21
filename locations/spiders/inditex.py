@@ -49,4 +49,4 @@ class InditexSpider(scrapy.Spider):
                     )
             yield item
 
-    new_property = None
+    requires_proxy = True

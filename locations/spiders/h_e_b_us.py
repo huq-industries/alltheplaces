@@ -51,4 +51,4 @@ class HEBUSSpider(Spider):
                     item["opening_hours"].add_range(day["day"].title(), day["opens"], day["closes"])
             yield item
 
-    new_property = None
+    requires_proxy = True

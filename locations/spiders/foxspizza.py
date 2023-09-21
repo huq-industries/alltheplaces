@@ -34,4 +34,4 @@ class FoxsPizzaSpider(SitemapSpider):
                 oh.add_range(m.group(1), m.group(2), m.group(3), time_format="%I:%M %p")
         return oh
 
-    new_property = None
+    requires_proxy = True

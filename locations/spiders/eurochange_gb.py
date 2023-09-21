@@ -24,4 +24,4 @@ class EurochangeGBSpider(SitemapSpider, StructuredDataSpider):
             item["website"] = item["website"].replace("eurochange.co.uk", "nmmoney.co.uk")
         yield item
 
-    new_property = None
+    requires_proxy = True

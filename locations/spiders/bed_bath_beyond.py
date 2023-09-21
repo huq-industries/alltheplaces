@@ -52,4 +52,4 @@ class BedBathBeyondSpider(scrapy.Spider):
             item["opening_hours"] = oh.as_opening_hours()
             return item
 
-    new_property = None
+    requires_proxy = True

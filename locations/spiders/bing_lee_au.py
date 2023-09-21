@@ -10,6 +10,7 @@ class BingLeeAUSpider(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://www.binglee.com.au/public/sitemap-locations.xml"]
     sitemap_rules = [("\\/stores\\/", "parse_sd")]
     wanted_types = ["ElectronicsStore"]
+    requires_proxy = True
 
     def post_process_item(self, item, response, ld_data, **kwargs):
         item["street_address"] = (
@@ -35,6 +36,3 @@ class BingLeeAUSpider(SitemapSpider, StructuredDataSpider):
         item["opening_hours"] = oh.as_opening_hours()
         yield item
 
-    new_property = None
-    new_property = None
-    new_property = None

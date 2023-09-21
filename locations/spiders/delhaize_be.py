@@ -8,4 +8,4 @@ class DelhaizeBESpider(SitemapSpider, StructuredDataSpider):
     item_attributes = {"brand": "Delhaize", "brand_wikidata": "Q1184173"}
     sitemap_urls = ["https://stores.delhaize.be/sitemap.xml"]
     sitemap_rules = [("/fr/", "parse_sd")]
-    new_property = None
+    requires_proxy = True

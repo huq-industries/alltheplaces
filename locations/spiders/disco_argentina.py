@@ -36,4 +36,4 @@ class DiscoArgentinaSpider(scrapy.Spider):
             ref += 1
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

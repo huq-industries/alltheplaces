@@ -55,4 +55,4 @@ class ExtraSpaceStorageSpider(SitemapSpider):
         assert data["@type"] == "SelfStorage"
         return data
 
-    new_property = None
+    requires_proxy = True

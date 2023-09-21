@@ -9,4 +9,4 @@ class CartersUSSpider(SitemapSpider, StructuredDataSpider):
     allowed_domains = ["locations.carters.com"]
     sitemap_urls = ["https://locations.carters.com/robots.txt"]
     sitemap_rules = [("https://locations\\.carters\\.com/.*/.*/.*", "parse")]
-    new_property = None
+    requires_proxy = True

@@ -73,4 +73,4 @@ class IntermarcheSpider(scrapy.Spider):
                 yield car_wash
             yield item
 
-    new_property = None
+    requires_proxy = True

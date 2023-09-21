@@ -38,4 +38,4 @@ class GBFSSpider(CSVFeedSpider):
             item["extras"]["public_transport"] = "stop_position"
             yield item
 
-    new_property = None
+    requires_proxy = True

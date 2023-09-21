@@ -33,4 +33,4 @@ class DominosPizzaDESpider(SitemapSpider):
             properties["postcode"] = locality_data.group(1)
         yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

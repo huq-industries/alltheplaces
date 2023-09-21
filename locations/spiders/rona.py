@@ -14,6 +14,7 @@ class RonaSpider(scrapy.Spider):
     start_urls = ["https://www.rona.ca/sitemap-stores-en.xml"]
     user_agent = BROWSER_DEFAULT
     download_delay = 30
+    requires_proxy = True
 
     def parse(self, response):
         response.selector.remove_namespaces()
@@ -56,6 +57,4 @@ class RonaSpider(scrapy.Spider):
             properties["opening_hours"] = self.parse_hours(hours)
         yield Feature(**properties)
 
-    new_property = None
-    new_property = None
-    new_property = None
+

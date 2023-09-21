@@ -76,4 +76,4 @@ class TorchysTacosSpider(scrapy.Spider):
         else:
             return [days.strip()[:2].title()]
 
-    new_property = None
+    requires_proxy = True

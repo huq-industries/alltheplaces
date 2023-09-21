@@ -52,4 +52,4 @@ class OttosCHSpider(scrapy.Spider):
             oh.add_range(day, h[0], h[2])
         return oh.as_opening_hours()
 
-    new_property = None
+    requires_proxy = True

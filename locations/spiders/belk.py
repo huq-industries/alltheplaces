@@ -12,4 +12,4 @@ class BelkSpider(CrawlSpider, StructuredDataSpider):
     start_urls = ["https://www.belk.com/customer-service/store-directory/"]
     rules = [Rule(LinkExtractor(allow="\\/store\\/.+\\/?StoreID=\\d+$"), callback="parse_sd")]
     json_parser = "json5"
-    new_property = None
+    requires_proxy = True

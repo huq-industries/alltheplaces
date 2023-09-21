@@ -12,4 +12,4 @@ class UltaBeautyUSSpider(SweetIQSpider):
         apply_category(Categories.SHOP_BEAUTY, item)
         yield item
 
-    new_property = None
+    requires_proxy = True

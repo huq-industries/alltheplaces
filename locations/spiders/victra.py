@@ -41,4 +41,4 @@ class VictraSpider(scrapy.Spider):
                 properties["opening_hours"] = hours
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

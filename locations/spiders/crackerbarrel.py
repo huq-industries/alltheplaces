@@ -43,4 +43,4 @@ class CrackerBarrelSpider(SitemapSpider):
         }
         yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

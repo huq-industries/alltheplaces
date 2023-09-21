@@ -85,4 +85,4 @@ class CavaSpider(scrapy.Spider):
                 timing = str(hours) + ":00"
         return timing
 
-    new_property = None
+    requires_proxy = True

@@ -45,4 +45,4 @@ class CampingWorldUSSpider(scrapy.Spider):
                 website=f"https://rv.campingworld.com/dealer/wichita-kansas{store['dealer_url']}",
             )
 
-    new_property = None
+    requires_proxy = True

@@ -44,4 +44,4 @@ class KrispyKremeSpider(scrapy.Spider):
             opening_hours.add_range(day=day, open_time=open_time, close_time=close_time)
         return opening_hours.as_opening_hours()
 
-    new_property = None
+    requires_proxy = True

@@ -30,4 +30,4 @@ class GrilldAUSpider(Spider):
                 item["opening_hours"].add_range(day_name, day["store"]["open"], day["store"]["close"], "%I:%M %p")
             yield item
 
-    new_property = None
+    requires_proxy = True

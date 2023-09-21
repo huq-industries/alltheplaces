@@ -27,4 +27,4 @@ class AussieDisposalsAUSpider(AmastyStoreLocatorSpider):
         item["opening_hours"].add_ranges_from_string(hours_string)
         yield item
 
-    new_property = None
+    requires_proxy = True

@@ -10,4 +10,4 @@ class SaturnSpider(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://www.saturn.de/sitemaps/sitemap-marketpages.xml"]
     sitemap_rules = [("/de/store/.+", "parse_sd")]
     wanted_types = ["Store"]
-    new_property = None
+    requires_proxy = True

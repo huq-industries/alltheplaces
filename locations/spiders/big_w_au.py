@@ -35,4 +35,4 @@ class BigWAUSpider(Spider):
             properties["opening_hours"].add_ranges_from_string(hours_string)
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

@@ -50,4 +50,4 @@ class VolvoSpider(scrapy.Spider):
             apply_category(Categories.SHOP_CAR, item)
             yield item
 
-    new_property = None
+    requires_proxy = True

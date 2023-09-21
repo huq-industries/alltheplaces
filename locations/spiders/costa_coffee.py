@@ -88,4 +88,4 @@ class CostaCoffeeSpider(Spider):
         if offset + response.json()["limit"] < response.json()["total"]:
             yield JsonRequest(url=f"{response.request.url}&limit={self.page_size}&offset={offset}")
 
-    new_property = None
+    requires_proxy = True

@@ -29,4 +29,4 @@ class OdeonGBSpider(Spider):
             location["url"] = f"https://www.odeon.co.uk{location['url']}"
             yield DictParser.parse(location)
 
-    new_property = None
+    requires_proxy = True

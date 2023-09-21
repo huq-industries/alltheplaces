@@ -14,4 +14,4 @@ class PapaJohnsGBSpider(SitemapSpider, StructuredDataSpider):
         item["website"] = response.url
         yield item
 
-    new_property = None
+    requires_proxy = True

@@ -16,4 +16,4 @@ class CubeSmartUSSpider(SitemapSpider, StructuredDataSpider):
         item["lon"] = item["lon"] * -1
         yield item
 
-    new_property = None
+    requires_proxy = True

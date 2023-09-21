@@ -70,4 +70,4 @@ class RadissonHotelsSpider(scrapy.Spider):
         extract_email(item, response)
         yield item
 
-    new_property = None
+    requires_proxy = True

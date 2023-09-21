@@ -28,4 +28,4 @@ class DickBlickSpider(SitemapSpider, StructuredDataSpider):
         item["opening_hours"] = oh.as_opening_hours()
         yield item
 
-    new_property = None
+    requires_proxy = True

@@ -48,4 +48,4 @@ class BestWesternSpider(scrapy.spiders.SitemapSpider):
                 yield item
                 return
 
-    new_property = None
+    requires_proxy = True

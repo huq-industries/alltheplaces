@@ -36,4 +36,4 @@ class EdwardJonesSpider(SitemapSpider, StructuredDataSpider):
         else:
             yield from self.get_location(item, page + 1)
 
-    new_property = None
+    requires_proxy = True

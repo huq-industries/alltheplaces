@@ -70,4 +70,4 @@ class FollettSpider(Spider):
         properties["extras"]["operator:wikidata"] = "Q5464641"
         yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

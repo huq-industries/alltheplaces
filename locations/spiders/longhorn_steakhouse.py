@@ -60,6 +60,4 @@ class LongHornSteakhouseSpider(scrapy.Spider):
                 properties["opening_hours"] = store_hours
             yield Feature(**properties)
 
-    new_property = None
-    new_property = None
-    new_property = None
+            requires_proxy = True

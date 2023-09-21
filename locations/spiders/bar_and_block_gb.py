@@ -25,4 +25,4 @@ class BarAndBlockGB(CrawlSpider):
         item["website"] = response.url
         return item
 
-    new_property = None
+    requires_proxy = True

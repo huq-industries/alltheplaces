@@ -19,4 +19,4 @@ class NinetyNineCentsOnlySpider(SitemapSpider):
         item["street_address"] = item["street_address"].strip()
         yield item
 
-    new_property = None
+    requires_proxy = True

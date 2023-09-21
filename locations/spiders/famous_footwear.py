@@ -14,12 +14,10 @@ class FamousFootwearSpider(SitemapSpider, StructuredDataSpider):
     wanted_types = ["Store"]
     user_agent = BROWSER_DEFAULT
     custom_settings = {"ROBOTSTXT_OBEY": False}
+    requires_proxy = True
 
     def inspect_item(self, item, response):
         matches = re.search('location: \\["(.*)", "(.*)"\\],', response.text)
         item["lat"], item["lon"] = (matches[1], matches[2])
         yield item
 
-    new_property = None
-    new_property = None
-    new_property = None

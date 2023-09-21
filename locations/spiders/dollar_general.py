@@ -37,4 +37,4 @@ class DollarGeneralSpider(SitemapSpider):
         properties["opening_hours"] = o.as_opening_hours()
         yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

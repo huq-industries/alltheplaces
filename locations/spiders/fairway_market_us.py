@@ -67,4 +67,4 @@ class FairwayMarketUSSpider(scrapy.Spider):
                 properties["opening_hours"] = h
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

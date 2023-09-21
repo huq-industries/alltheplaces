@@ -10,4 +10,4 @@ class CabelasSpider(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://stores.cabelas.com/sitemap.xml", "https://www.cabelas.ca/sitemap.xml"]
     sitemap_rules = [("https://stores.cabelas.com/[-\\w]+", "parse_sd"), ("/find-a-store/", "parse_sd")]
     wanted_types = ["SportingGoodsStore", "Store"]
-    new_property = None
+    requires_proxy = True

@@ -39,4 +39,4 @@ class JourneysSpider(StructuredDataSpider):
         apply_category(Categories.SHOP_SHOES, item)
         yield item
 
-    new_property = None
+    requires_proxy = True

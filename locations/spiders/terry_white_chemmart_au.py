@@ -34,4 +34,4 @@ class TerryWhiteChemmartAUSpider(scrapy.Spider):
                         item["opening_hours"].add_range(day, start_time, end_time, time_format="%H%M")
             yield item
 
-    new_property = None
+    requires_proxy = True

@@ -36,4 +36,4 @@ class MiniBESpider(scrapy.Spider):
             item["website"] = row.get("attributes", {}).get("homepage")
             yield item
 
-    new_property = None
+    requires_proxy = True

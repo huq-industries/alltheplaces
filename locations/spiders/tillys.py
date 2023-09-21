@@ -46,4 +46,4 @@ class Tillys(scrapy.Spider):
             }
             yield Feature(**props)
 
-    new_property = None
+    requires_proxy = True

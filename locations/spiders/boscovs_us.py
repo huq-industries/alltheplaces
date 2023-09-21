@@ -27,4 +27,4 @@ class BoscovsUSSpider(KiboSpider):
                 item["website"] = attribute["values"][0]
         yield item
 
-    new_property = None
+    requires_proxy = True

@@ -24,4 +24,4 @@ class GoOutdoorsSpider(CrawlSpider):
             item["lat"], item["lon"] = url_to_coords(store["hasmap"])
             yield item
 
-    new_property = None
+    requires_proxy = True

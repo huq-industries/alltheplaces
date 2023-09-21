@@ -6,4 +6,4 @@ class MassiveJoesAUSpider(WPStoreLocatorSpider):
     item_attributes = {"brand": "MassiveJoes", "brand_wikidata": "Q117746887"}
     allowed_domains = ["massivejoes.com"]
     time_format = "%I:%M %p"
-    new_property = None
+    requires_proxy = True

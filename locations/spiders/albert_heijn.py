@@ -55,4 +55,4 @@ class AlbertHeijnSpider(Spider):
         if response.json()[0]["data"]["stores"]["page"]["hasNextPage"]:
             yield from self.get_page(response.url, response.meta["page_number"] + 1)
 
-    new_property = None
+    requires_proxy = True

@@ -15,4 +15,4 @@ class MarathonSpider(scrapy.spiders.CSVFeedSpider):
             row["id"] = row.pop("StoreNumber")
             yield DictParser.parse(row)
 
-    new_property = None
+    requires_proxy = True

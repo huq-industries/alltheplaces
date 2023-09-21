@@ -40,4 +40,4 @@ class AnthonysRestaurantsSpider(scrapy.Spider):
         }
         return Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

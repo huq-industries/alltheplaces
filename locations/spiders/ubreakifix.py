@@ -24,4 +24,4 @@ class uBreakiFixSpider(SitemapSpider, StructuredDataSpider):
             item.update(self.ASURION)
         yield item
 
-    new_property = None
+    requires_proxy = True

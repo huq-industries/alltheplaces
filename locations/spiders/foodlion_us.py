@@ -48,4 +48,4 @@ class FoodLionUSSpider(scrapy.Spider):
             item["opening_hours"] = self.parse_hours(store["hours"])
             yield item
 
-    new_property = None
+    requires_proxy = True

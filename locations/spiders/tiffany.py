@@ -52,4 +52,4 @@ class TiffanySpider(Spider):
                 continue
             yield item
 
-    new_property = None
+    requires_proxy = True

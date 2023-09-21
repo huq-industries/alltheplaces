@@ -26,4 +26,4 @@ class HSamuelGBSpider(CrawlSpider, StructuredDataSpider):
                 item["opening_hours"].add_range(day, start_time, end_time, time_format="%I:%M %p")
         yield item
 
-    new_property = None
+    requires_proxy = True

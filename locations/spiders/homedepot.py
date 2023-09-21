@@ -40,4 +40,4 @@ class HomeDepotSpider(CrawlSpider, StructuredDataSpider):
             item["opening_hours"].add_range(day[:2].title(), info["open"], info["close"])
         yield item
 
-    new_property = None
+    requires_proxy = True

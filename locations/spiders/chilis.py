@@ -63,6 +63,4 @@ class ChilisSpider(scrapy.Spider):
         for url in urls:
             yield scrapy.Request(response.urljoin(url), callback=self.parse_city)
 
-    new_property = None
-    new_property = None
-    new_property = None
+            requires_proxy = True

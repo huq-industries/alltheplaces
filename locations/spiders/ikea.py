@@ -86,4 +86,4 @@ class IkeaSpider(scrapy.Spider):
                 properties["state"] = store["address"].get("stateProvinceCode")[2:]
             yield Feature(**properties)
 
-    new_property = None
+    requires_proxy = True

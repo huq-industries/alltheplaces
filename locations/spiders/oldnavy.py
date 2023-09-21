@@ -10,4 +10,4 @@ class OldNavySpider(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://oldnavy.gap.com/stores/sitemap.xml"]
     sitemap_rules = [("/stores/[-\\w]+/[-\\w]+/[-\\w]+.html$", "parse_sd")]
     wanted_types = ["ClothingStore"]
-    new_property = None
+    requires_proxy = True

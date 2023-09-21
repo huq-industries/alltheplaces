@@ -17,4 +17,4 @@ class StonegateGBSpider(scrapy.spiders.SitemapSpider):
             item["website"] = response.url
             return item
 
-    new_property = None
+    requires_proxy = True

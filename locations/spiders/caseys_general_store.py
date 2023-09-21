@@ -17,4 +17,4 @@ class CaseysGeneralStoreSpider(SitemapSpider):
         item["ref"] = item["website"].split("/")[-1]
         yield item
 
-    new_property = None
+    requires_proxy = True

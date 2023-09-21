@@ -25,4 +25,4 @@ class ZaxbysUSSpider(SitemapSpider, StructuredDataSpider):
         item.pop("twitter")
         yield item
 
-    new_property = None
+    requires_proxy = True

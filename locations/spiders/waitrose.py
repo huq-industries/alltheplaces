@@ -92,4 +92,4 @@ class WaitroseSpider(scrapy.Spider):
             oh.add_range(day, start_time, end_time)
         return oh
 
-    new_property = None
+    requires_proxy = True

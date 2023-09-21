@@ -29,4 +29,4 @@ class LandmarkCinemasCASpider(Spider):
         item["street_address"] = clean_address([location["Address1"], location["Address2"]])
         yield item
 
-    new_property = None
+    requires_proxy = True

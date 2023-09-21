@@ -21,4 +21,4 @@ class CinemarkSpider(SitemapSpider):
         )["pp"][0].split(",")
         yield item
 
-    new_property = None
+    requires_proxy = True
