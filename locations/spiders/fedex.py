@@ -16,6 +16,7 @@ class FedExSpider(SitemapSpider, StructuredDataSpider):
         (r"\/office-[0-9]{4}$", "parse_sd"),
     ]
     wanted_types = ["LocalBusiness"]
+    zyte_priority = 1
     custom_settings = {  # Disable NSI matching
         "ITEM_PIPELINES": ITEM_PIPELINES | {"locations.pipelines.apply_nsi_categories.ApplyNSICategoriesPipeline": None}
     }
