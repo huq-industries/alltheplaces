@@ -14,6 +14,7 @@ class UspsSpider(scrapy.Spider):
         "brand_wikidata": "Q668687",
         "extras": Categories.POST_OFFICE.value,
     }
+    zyte_priority = 1
 
     def start_requests(self):
         for lat, lon in point_locations("us_centroids_25mile_radius.csv"):

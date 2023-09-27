@@ -11,6 +11,7 @@ class GoodyearEUSpider(SitemapSpider):
     allowed_domains = ["www.goodyear.eu"]
     sitemap_urls = ["https://www.goodyear.eu/robots.txt"]
     sitemap_rules = [(r"", "parse_store")]
+    zyte_priority = 1
 
     def sitemap_filter(self, entries):
         for entry in entries:

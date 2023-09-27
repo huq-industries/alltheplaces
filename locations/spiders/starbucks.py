@@ -16,6 +16,7 @@ class StarbucksSpider(scrapy.Spider):
     name = "starbucks"
     item_attributes = {"brand": "Starbucks", "brand_wikidata": "Q37158", "extras": Categories.COFFEE_SHOP.value}
     allowed_domains = ["www.starbucks.com"]
+    zyte_priority = 1
 
     def start_requests(self):
         searchable_point_files = [
