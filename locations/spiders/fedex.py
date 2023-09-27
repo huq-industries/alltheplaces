@@ -14,6 +14,7 @@ class FedExSpider(SitemapSpider, StructuredDataSpider):
         (r"\/office-[0-9]{4}$", "parse_sd"),
     ]
     wanted_types = ["LocalBusiness"]
+    zyte_priority = 1
 
     def post_process_item(self, item, response, ld_data, **kwargs):
         item["email"] = response.xpath('//a[@class="Hero-emailLink Link--primary"]/@href').extract_first()
