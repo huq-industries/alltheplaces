@@ -10,6 +10,7 @@ class MoneyGramSpider(Where2GetItSpider):
     api_brand_name = "moneygram"
     api_key = "46493320-D5C3-11E1-A25A-4A6F97B4DA77"
     api_filter_admin_level = 1
+    zyte_units = 2
 
     def parse_item(self, item, location):
         # MoneyGram compiles location information provided by
