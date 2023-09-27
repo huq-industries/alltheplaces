@@ -17,6 +17,7 @@ class WesternUnionSpider(Spider):
     # start_urls[0] is a GraphQL endpoint.
     start_urls = ["https://www.westernunion.com/router/"]
     download_delay = 0.2
+    zyte_priority = 1
 
     def request_page(self, latitude, longitude, page_number):
         # An access code for querying the GraphQL endpoint is

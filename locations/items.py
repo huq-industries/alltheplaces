@@ -7,6 +7,8 @@ import scrapy
 
 
 class Feature(scrapy.Item):
+    _validation = scrapy.Field()
+
     lat = scrapy.Field()
     lon = scrapy.Field()
     geometry = scrapy.Field()
@@ -34,6 +36,9 @@ class Feature(scrapy.Item):
     located_in_wikidata = scrapy.Field()
     nsi_id = scrapy.Field()
     extras = scrapy.Field()
+    spider = scrapy.Field()
+    shop = scrapy.Field()
+    amenity = scrapy.Field()
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

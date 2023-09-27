@@ -17,6 +17,8 @@ class HiltonSpider(SitemapSpider, StructuredDataSpider):
         "DOWNLOAD_DELAY": 0.2,
     }
     visited_pages = set()
+    zyte_priority = 1
+    zyte_units = 2
 
     HILTON_DOUBLETREE = ["DoubleTree by Hilton", "Q2504643"]
     HILTON_HOTELS = ["Hilton Hotels & Resorts", "Q598884"]
