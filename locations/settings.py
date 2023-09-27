@@ -24,9 +24,6 @@ NEWSPIDER_MODULE = "locations.spiders"
 COMMANDS_MODULE = "locations.commands"
 
 
-# Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = f"Mozilla/5.0 (X11; Linux x86_64) {BOT_NAME}/{locations.__version__} (+https://github.com/alltheplaces/alltheplaces; framework {scrapy.__version__})"
-
 ROBOTSTXT_USER_AGENT = BOT_NAME
 
 # Obey robots.txt rules
@@ -71,25 +68,17 @@ TELNETCONSOLE_ENABLED = False
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {}
-
-if os.environ.get("ZYTE_API_KEY"):
-    DOWNLOAD_HANDLERS = {
-        "http": "scrapy_zyte_api.ScrapyZyteAPIDownloadHandler",
-        "https": "scrapy_zyte_api.ScrapyZyteAPIDownloadHandler",
-    }
-    DOWNLOADER_MIDDLEWARES = {
-        "locations.middlewares.zyte_api_by_country.ZyteApiByCountryMiddleware": 500,
-        "scrapy_zyte_api.ScrapyZyteAPIDownloaderMiddleware": 1000,
-    }
-    REQUEST_FINGERPRINTER_CLASS = "scrapy_zyte_api.ScrapyZyteAPIRequestFingerprinter"
-    TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
-else:
-    DOWNLOADER_MIDDLEWARES = {
-        "scrapy_zyte_smartproxy.ZyteSmartProxyMiddleware": 610,
-    }
-
-DOWNLOADER_MIDDLEWARES["locations.middlewares.cdnstats.CDNStatsMiddleware"] = 500
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_zyte_api.ScrapyZyteAPIDownloadHandler",
+    "https": "scrapy_zyte_api.ScrapyZyteAPIDownloadHandler",
+}
+DOWNLOADER_MIDDLEWARES = {
+    "locations.middlewares.cdnstats.CDNStatsMiddleware": 500,
+    "locations.middlewares.zyte_api_by_country.ZyteApiByCountryMiddleware": 600,
+    "scrapy_zyte_api.ScrapyZyteAPIDownloaderMiddleware": 1000,
+}
+REQUEST_FINGERPRINTER_CLASS = "scrapy_zyte_api.ScrapyZyteAPIRequestFingerprinter"
+TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html

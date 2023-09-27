@@ -1,3 +1,4 @@
+import logging
 import re
 
 from scrapy import Request, Spider
@@ -34,12 +35,15 @@ class ZyteApiByCountryMiddleware:
         return cls(crawler)
 
     def _load_config(self, spider: Spider):
-        if requires_proxy := getattr(spider, "requires_proxy", False):
+        if (requires_proxy := getattr(spider, "requires_proxy", False)) and self.crawler.settings.get("ZYTE_API_KEY", False):
             if cc := get_proxy_location(requires_proxy, spider.name):
                 self.zyte_api_automap = {"geolocation": cc.upper()}  # Use the country code set in spider
+                logging.error(f"AUTOMAP {cc.upper()}")
             else:
                 self.zyte_api_automap = True  # Let zyte work out the best place
+                logging.error("AUTOMAP")
         else:
+            logging.error("NO AUTOMAP")
             self.zyte_api_automap = False  # Proxy disabled
 
     def process_request(self, request: Request, spider: Spider):
