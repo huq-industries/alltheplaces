@@ -9,10 +9,6 @@
 
 import os
 
-import scrapy
-
-import locations
-
 from .utils import feed_uri_params
 
 ENV = "local"
