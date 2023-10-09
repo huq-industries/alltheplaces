@@ -12,6 +12,7 @@ class BAndMSpider(SitemapSpider, StructuredDataSpider):
     sitemap_urls = ["https://www.bmstores.co.uk/hpcstores/storessitemap"]
     sitemap_rules = [("", "parse_sd")]
     wanted_types = ["LocalBusiness"]
+    zyte_units = 2
 
     def inspect_item(self, item, response):
         item["street_address"] = clean_address(item["street_address"])
