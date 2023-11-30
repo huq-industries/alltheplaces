@@ -3,8 +3,9 @@ from collections import deque
 from functools import reduce
 from operator import or_
 
-import firebase_admin
-from firebase_admin import credentials, firestore
+from google import auth
+from google.cloud import firestore
+
 from mergedeep import merge
 from scrapy.statscollectors import StatsCollector
 
@@ -45,9 +46,9 @@ class GoogleFirestoreCollector(StatsCollector):
         max_stored_stats = settings.getint("SPIDERMON_MAX_STORED_STATS", default=100)
         self.env = settings.get("ENV")
 
-        cred = credentials.ApplicationDefault()
-        firebase_admin.initialize_app(cred, options={"projectId": settings.get("GCP_PROJECT_ID")})
-        self.firestore_client = firestore.client()
+        credentials, project_id = auth.default()
+        self.firestore_client = firestore.Client(project=project_id, credentials=credentials,
+                                                 database=settings.get("STATS_FIRESTORE_DATABASE"))
 
         doc = self._document(spider).get().to_dict()
         spider.stats_history = deque(
