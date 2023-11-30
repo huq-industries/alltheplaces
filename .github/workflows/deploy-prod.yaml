@@ -27,7 +27,10 @@ jobs:
           pip --quiet install pipenv
       - name: Install dependencies
         run: |
-          pipenv install --dev
+          pipenv install
+      - name: Generate requirements.txt
+        run : |
+          pipenv run pip freeze > requirements.txt
       - name: Deploy code to scrapy cloud
         shell: bash
         run: pipenv run shub deploy ${SHUB_PROJECTID} --version "master-${GITHUB_SHA}"

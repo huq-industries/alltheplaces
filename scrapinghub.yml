@@ -5,4 +5,4 @@ projects:
   default: 668973
 
 requirements:
-  file: Pipfile
+  file: requirements.txt
