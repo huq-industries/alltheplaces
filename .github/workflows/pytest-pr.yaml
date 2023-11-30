@@ -1,17 +1,16 @@
 name: Run pytest when core files have changed
 
 on:
-  pull_request:
-    paths:
-    - '.github/workflows/*.yaml'
-    - 'locations/commands/*.py'
-    - 'locations/middlewares/*.py'
-    - 'locations/pipelines/*.py'
-    - 'locations/storefinders/*.py'
-    - 'locations/*.py'
-    - 'tests/*.py'
-    - 'Pipfile'
-    - 'Pipfile.lock'
+  workflow_dispatch:
+#  pull_request:
+#    paths:
+#    - '.github/workflows/*.yaml'
+#    - 'locations/commands/*.py'
+#    - 'locations/middlewares/*.py'
+#    - 'locations/pipelines/*.py'
+#    - 'locations/storefinders/*.py'
+#    - 'locations/*.py'
+#    - 'tests/*.py'
 
 
 jobs:
