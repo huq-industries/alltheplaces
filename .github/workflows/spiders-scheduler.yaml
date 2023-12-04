@@ -2,7 +2,7 @@ name: Spiders Scheduler
 
 on:
   schedule:
-    - cron: '0 18 * * 5' # Every
+    - cron: '0 18 * * 5' # Every Friday at 18:00 UTC
   workflow_dispatch:
 
 jobs:
