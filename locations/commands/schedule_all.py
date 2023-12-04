@@ -1,4 +1,5 @@
 import subprocess
+from datetime import date
 
 from scrapy.commands import ScrapyCommand
 
@@ -11,12 +12,18 @@ class Command(ScrapyCommand):
         return "Schedule available spiders"
 
     def run(self, args, opts):
+        schedule_date = date.today().isoformat()
         project = args[0] if len(args) > 0 else "default"
-
         spiders = self.crawler_process.spider_loader.list_schedule()
+
         for spider, conf in spiders.items():
-            priority = conf["priority"]
-            units = conf["units"]
-            subprocess.run(
-                ["pipenv", "run", "shub", "schedule", f"-p {priority}", f"-u {units}", f"{project}/{spider}"]
+            result = subprocess.run(
+                [
+                    "pipenv", "run", "shub", "schedule",
+                    "--priority", str(conf["priority"]),
+                    "--units", str(conf["units"]),
+                    "--set", f"SCHEDULE_DATE={schedule_date}",
+                    f"{project}/{spider}"
+                ]
             )
+            result.check_returncode()
