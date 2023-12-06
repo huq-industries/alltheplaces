@@ -117,12 +117,13 @@ ITEM_PIPELINES = {
     "locations.pipelines.check_item_properties.CheckItemPropertiesPipeline": 600,
     "locations.pipelines.closed.ClosePipeline": 650,
     "locations.pipelines.apply_nsi_categories.ApplyNSICategoriesPipeline": 700,
-    "locations.pipelines.count_categories.CountCategoriesPipeline": 800,
-    "locations.pipelines.count_brands.CountBrandsPipeline": 810,
-    "locations.pipelines.count_operators.CountOperatorsPipeline": 820,
+#    "locations.pipelines.count_categories.CountCategoriesPipeline": 800,
+#    "locations.pipelines.count_brands.CountBrandsPipeline": 810,
+#    "locations.pipelines.count_operators.CountOperatorsPipeline": 820,
     # Huq: These flood the stats objects with keys for every spider - we can aggregate them trivally in BigQuery
     # "locations.pipelines.count_categories.CountCategoriesPipeline": 800,
     # "locations.pipelines.count_brands.CountBrandsPipeline": 810,
+    "spidermon.contrib.scrapy.pipelines.ItemValidationPipeline": 5000,
     "locations.pipelines.huq_adjust.HuqAdjustPipeline": 99999,
 }
 
@@ -192,19 +193,20 @@ STATS_CLASS = "spidermon.contrib.stats.statscollectors.local_storage.LocalStorag
 
 SPIDERMON_MIN_ITEMS = 1
 SPIDERMON_MAX_CRITICALS = 0
-SPIDERMON_MAX_ERRORS = 0
+SPIDERMON_MAX_ERRORS = 3
 # Covers known warnings:
 # [py.warnings] /usr/local/lib/python3.10/site-packages/scrapy/extensions/feedexport.py:42 ScrapyDeprecationWarning x2
 # [py.warnings] /usr/local/lib/python3.10/site-packages/scrapinghub/client/__init__.py:60: UserWarning
-SPIDERMON_MAX_WARNINGS = 3
 
 SPIDERMON_MAX_DOWNLOADER_EXCEPTIONS = 0
 SPIDERMON_MAX_RETRIES = 2
 SPIDERMON_MIN_SUCCESSFUL_REQUESTS = 1
 SPIDERMON_UNWANTED_HTTP_CODES = {
-    400: {"max_count": 100, "max_percentage": 0.5},
-    407: {"max_count": 100, "max_percentage": 0.5},
-    429: {"max_count": 100, "max_percentage": 0.5},
+    400: 0,
+    401: 0,
+    403: 0,
+    407: 0,
+    429: 0,
     500: 0,
     502: 0,
     503: 0,
@@ -215,13 +217,12 @@ SPIDERMON_UNWANTED_HTTP_CODES = {
 }
 
 # Stores the stats of the last 10 spider execution (default=100)
-SPIDERMON_MAX_STORED_STATS = 10
+SPIDERMON_MAX_STORED_STATS = 1000
 
-# SPIDERMON_VALIDATION_MODELS = ("locations.validators.LocationItem",)
-#
-# # Adds _validation to the item when the item doesn’t match the schema
-# SPIDERMON_VALIDATION_ADD_ERRORS_TO_ITEMS = True
-# SPIDERMON_MAX_ITEM_VALIDATION_ERRORS = 0
+SPIDERMON_VALIDATION_SCHEMAS = (
+    'locations/schema.json',
+)
+SPIDERMON_MAX_ITEM_VALIDATION_ERRORS = 0
 
 SPIDERMON_SLACK_FAKE = True  # Override in settings on Zyte
 SPIDERMON_SLACK_SENDER_NAME = "Spidermon"
