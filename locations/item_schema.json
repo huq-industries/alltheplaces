@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "properties": {
+    "geometry": {
+      "type": [
+        "object"
+      ]
+    },
+    "name": {
+      "type": [
+        "string"
+      ]
+    },
+    "branch": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "addr_full": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "housenumber": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "street": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "street_address": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "city": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "state": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "postcode": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "country": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 2,
+      "maxLength": 2
+    },
+    "phone": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "email"
+    },
+    "website": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "twitter": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "facebook": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "opening_hours": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "image": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brand": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "brand_wikidata": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "operator_wikidata": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "located_in": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "located_in_wikidata": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nsi_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "extras": {
+      "type": "object"
+    },
+    "spider": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "shop": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "amenity": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "geometry",
+    "name",
+    "extras"
+  ]
+}

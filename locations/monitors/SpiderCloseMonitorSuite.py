@@ -10,9 +10,9 @@ class SpiderCloseMonitorSuite(MonitorSuite):
     monitors = [
         HistoryMonitor,
         stock_monitors.ItemCountMonitor,
-        # stock_monitors.ItemValidationMonitor,
+        stock_monitors.ItemValidationMonitor,
         stock_monitors.ErrorCountMonitor,
-        stock_monitors.WarningCountMonitor,
+        #stock_monitors.WarningCountMonitor,
         stock_monitors.FinishReasonMonitor,
         stock_monitors.UnwantedHTTPCodesMonitor,
         # stock_monitors.FieldCoverageMonitor,
