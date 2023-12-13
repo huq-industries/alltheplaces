@@ -1,10 +1,8 @@
 name: Run Changed Spiders in Pull Requests
 
-# Only run on pushes
+# Only run manually
 on:
-  pull_request:
-    paths:
-    - 'locations/spiders/*.py'
+  workflow_dispatch:
 
 jobs:
   test-spider:

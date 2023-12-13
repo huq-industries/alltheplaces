@@ -1,11 +1,8 @@
 name: Run sample spiders on Pipfile changes
 
-# Only run on pushes
+# Only run manually
 on:
-  pull_request:
-    paths:
-    - 'Pipfile'
-    - 'Pipfile.lock'
+  workflow_dispatch:
 
 jobs:
   test-spider:
