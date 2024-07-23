@@ -5,7 +5,7 @@ from locations.categories import apply_category
 from locations.items import Feature
 
 
-class NSWAmbulanceAUSpider(Spider):
+class NswAmbulanceAUSpider(Spider):
     name = "nsw_ambulance_au"
     item_attributes = {"operator": "New South Wales Ambulance", "operator_wikidata": "Q4741948"}
     allowed_domains = ["portal.spatial.nsw.gov.au"]
@@ -50,5 +50,5 @@ class NSWAmbulanceAUSpider(Spider):
             ]:
                 properties["state"] = "ACT"
                 properties["operator"] = "Australian Capital Territory Ambulance Service"
-                properties["operator:wikidata"] = "Q4823922"
+                properties["operator_wikidata"] = "Q4823922"
             yield Feature(**properties)

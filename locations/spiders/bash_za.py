@@ -6,6 +6,8 @@ from scrapy.http import JsonRequest
 from locations.categories import Categories
 from locations.dict_parser import DictParser
 from locations.hours import DAYS, OpeningHours
+from locations.items import set_closed
+from locations.pipelines.address_clean_up import clean_address
 
 BASH_BRANDS = {
     "ASJ": {"brand": "American Swiss", "brand_wikidata": "Q116430764"},
@@ -17,6 +19,8 @@ BASH_BRANDS = {
         "extras": Categories.SHOP_CLOTHES.value,
     },
     "COLETTE": {"brand": "Colette", "brand_wikidata": "Q737606", "extras": Categories.SHOP_CLOTHES.value},
+    "CORICRAFT": {"brand": "Coricraft", "brand_wikidata": "Q116428628"},
+    "DIAL A BED": {"brand": "Dial-a-Bed", "brand_wikidata": "Q116429178"},
     "EXACT": {"brand": "Exact", "brand_wikidata": "Q116379381"},
     "EX": {"brand": "Exact", "brand_wikidata": "Q116379381"},
     "DONNA": {"brand": "Donna", "brand_wikidata": "Q117407190", "extras": Categories.SHOP_VARIETY_STORE.value},
@@ -60,7 +64,9 @@ BASH_BRANDS = {
     "TOTALSPORTS": {"brand": "Totalsports", "brand_wikidata": "Q116379123"},
     "TS": {"brand": "Totalsports", "brand_wikidata": "Q116379123"},
     "THE FIX": {"brand": "The FIX", "brand_wikidata": "Q116379523"},
+    "THE BED STORE": {"brand": "The Bed Store", "brand_wikidata": "Q116429563"},
     "THE SCENE": {"brand": "The Scene", "brand_wikidata": "Q117406601", "extras": Categories.SHOP_CLOTHES.value},
+    "VOLPES": {"brand": "Volpes", "brand_wikidata": "Q116431266"},
 }
 
 
@@ -72,6 +78,7 @@ class BashZASpider(Spider):
     ]
 
     def start_requests(self):
+        self.brand_name_regex = re.compile(r"^(" + "|".join(BASH_BRANDS) + r") ", re.IGNORECASE)
         for url in self.start_urls:
             yield JsonRequest(url=url)
 
@@ -91,9 +98,7 @@ class BashZASpider(Spider):
             item["lat"] = location["address"]["location"]["latitude"]
             item["lon"] = location["address"]["location"]["longitude"]
             item.pop("street")
-            item["street_address"] = " ".join(
-                filter(None, [location["address"]["street"], location["address"]["complement"]])
-            ).strip()
+            item["street_address"] = clean_address([location["address"]["street"], location["address"]["complement"]])
             item["website"] = (
                 "https://bash.com/store/"
                 + item["name"].lower().replace(" ", "-")
@@ -108,9 +113,10 @@ class BashZASpider(Spider):
                     DAYS[hours_range["dayOfWeek"]], hours_range["openingTime"], hours_range["closingTime"], "%H:%M:%S"
                 )
 
-            brands_regex_group = r"|".join(BASH_BRANDS)
-            brand_name_regex = r"^(" + brands_regex_group + r") "
-            if m := re.match(brand_name_regex, item["name"], flags=re.IGNORECASE):
+            if " (CLOSED) " in item["name"]:
+                set_closed(item)
+
+            if m := self.brand_name_regex.match(item["name"]):
                 item.update(BASH_BRANDS[m.group(1).upper()])
 
             yield item

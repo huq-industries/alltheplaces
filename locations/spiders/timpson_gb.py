@@ -37,7 +37,7 @@ class TimpsonGBSpider(CrawlSpider):
     item_attributes = {"brand": "Timpson", "brand_wikidata": "Q7807658"}
     start_urls = ["https://www.timpson.co.uk/stores/"]
     rules = [Rule(LinkExtractor(allow="stores/"), callback="parse_func", follow=True)]
-    download_delay = 0.5
+    requires_proxy = "GB"
 
     def parse_func(self, response):
         return self.extract(response)
@@ -81,6 +81,8 @@ class TimpsonGBSpider(CrawlSpider):
                     "Photo Gifts" in services or "Photo Processing" in services or "Instant Photo Printing" in services
                 ):
                     apply_category(Categories.SHOP_PHOTO, item)
+                else:
+                    apply_category(Categories.SHOP_SHOE_REPAIR, item)
 
                 # TODO: too painful to port at present
                 # for brand in [Brand.MORRISONS, Brand.SAINSBURYS, Brand.TESCO, Brand.ASDA, Brand.WAITROSE]:

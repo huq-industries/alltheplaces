@@ -4,7 +4,7 @@ from locations.categories import Categories, Fuel, apply_category, apply_yes_no
 from locations.dict_parser import DictParser
 
 
-class OTRAUSpider(Spider):
+class OtrAUSpider(Spider):
     name = "otr_au"
     item_attributes = {"brand": "OTR", "brand_wikidata": "Q116394019"}
 
@@ -21,9 +21,9 @@ class OTRAUSpider(Spider):
                 clean_location[key.replace("site_", "")] = value
             location = clean_location
 
-            location[
-                "url"
-            ] = f'https://www.otr.com.au/locations/{location["suburb_url"]}-{location["streetaddress_url"]}/{location["name_url"]}/'
+            location["url"] = (
+                f'https://www.otr.com.au/locations/{location["suburb_url"]}-{location["streetaddress_url"]}/{location["name_url"]}/'
+            )
 
             item = DictParser.parse(location)
 

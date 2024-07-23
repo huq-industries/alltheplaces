@@ -1,15 +1,21 @@
 import geonamescache
 import scrapy
 
-from locations.categories import Extras, apply_yes_no
+from locations.categories import Categories, Extras, apply_yes_no
 from locations.dict_parser import DictParser
 from locations.geo import city_locations, point_locations
 from locations.hours import DAYS_EN, OpeningHours
 
+BURGER_KING_SHARED_ATTRIBUTES = {
+    "brand": "Burger King",
+    "brand_wikidata": "Q177054",
+    "extras": Categories.FAST_FOOD.value,
+}
+
 
 class BurgerKingSpider(scrapy.Spider):
-    name = "burgerking"
-    item_attributes = {"brand": "Burger King", "brand_wikidata": "Q177054"}
+    name = "burger_king"
+    item_attributes = BURGER_KING_SHARED_ATTRIBUTES
     download_delay = 2.0
     custom_settings = {"ROBOTSTXT_OBEY": False}
 
@@ -155,13 +161,15 @@ class BurgerKingSpider(scrapy.Spider):
             yield self.make_request(lat, lon, "US", 128000, 20000, us_endpoint)
 
     store_locator_templates = {
+        "AT": "https://www.burgerking.at/store-locator/store/{}",
         "CA": "https://www.burgerking.ca/store-locator/store/{}",
+        "CH": "https://www.burger-king.ch/store-locator/store/{}",
         "DE": "https://www.burgerking.de/store-locator/store/{}",
         "GB": "https://www.burgerking.co.uk/store-locator/store/{}",
         "NZ": "https://www.burgerking.co.nz/store-locator/store/{}",
         "NL": "https://www.burgerking.nl/store-locator/store/{}",
+        "PL": "https://burgerking.pl/store-locator/store/{}",
         "US": "https://www.bk.com/store-locator/store/{}",
-        # TODO: more countries
     }
 
     def parse(self, response, country_code):

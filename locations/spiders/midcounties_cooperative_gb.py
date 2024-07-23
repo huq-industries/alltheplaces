@@ -3,6 +3,7 @@ from scrapy import Spider
 from locations.categories import Categories, apply_category
 from locations.dict_parser import DictParser
 from locations.hours import DAYS_FULL, OpeningHours
+from locations.pipelines.address_clean_up import clean_address
 
 
 class MidcountiesCooperativeGBSpider(Spider):
@@ -10,7 +11,7 @@ class MidcountiesCooperativeGBSpider(Spider):
     item_attributes = {
         "brand": "Your Co-op",
         "operator": "Midcounties Co-operative",
-        "operator:wikidata": "Q6841138",
+        "operator_wikidata": "Q6841138",
     }
     start_urls = ["https://www.midcounties.coop/static/js/stores.json"]
     no_refs = True
@@ -18,9 +19,8 @@ class MidcountiesCooperativeGBSpider(Spider):
     def parse(self, response):
         for store in response.json()["stores"]:
             item = DictParser.parse(store)
-
-            item["street_address"] = ", ".join(
-                filter(None, [store.get("addressLine1"), store.get("addressLine2"), store.get("addressLine3")])
+            item["street_address"] = clean_address(
+                [store.get("addressLine1"), store.get("addressLine2"), store.get("addressLine3")]
             )
 
             item["opening_hours"] = OpeningHours()

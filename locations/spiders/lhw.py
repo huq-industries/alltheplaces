@@ -8,12 +8,12 @@ from locations.settings import DEFAULT_PLAYWRIGHT_SETTINGS
 
 FEATURES_MAPPING = {
     "Swimming Pool(s)": Extras.SWIMMING_POOL,
-    "Pet Friendly - Conditions Apply": Extras.PETS_ALLOWED
+    "Pet Friendly - Conditions Apply": Extras.PETS_ALLOWED,
     # TODO: other features
 }
 
 
-class LHWSpider(scrapy.Spider):
+class LhwSpider(scrapy.Spider):
     name = "lhw"
     allowed_domains = ["www.lhw.com"]
     start_urls = ["https://www.lhw.com/services/json/FindAllHotelsV2_en.js"]

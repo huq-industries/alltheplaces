@@ -1,10 +1,11 @@
 from scrapy import Spider
 from scrapy.http import JsonRequest
 
+from locations.categories import Categories, apply_category
 from locations.dict_parser import DictParser
 
 
-class EGAmericaUSSpider(Spider):
+class EgAmericaUSSpider(Spider):
     name = "eg_america_us"
     allowed_domains = ["www.cumberlandfarms.com"]
     # The provided start_urls[0] returns all brand locations due to
@@ -38,4 +39,5 @@ class EGAmericaUSSpider(Spider):
             item.update(self.brands[location["bannerId"]])
             item["street_address"] = item.pop("addr_full", None)
             item["website"] = location.get("pageUrl")
+            apply_category(Categories.FUEL_STATION, item)
             yield item
